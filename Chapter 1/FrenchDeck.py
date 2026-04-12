@@ -1,21 +1,20 @@
 import collections
 import random
 
-Card = collections.namedtuple('Card', ['rank', 'suit'])
+Card = collections.namedtuple("Card", ["rank", "suit"])
 
 # Example of representation of namedtuple defined above
-beer_card = Card('7', 'diamonds')
-print(f'Beer card: {beer_card}')
+beer_card = Card("7", "diamonds")
+print(f"Beer card: {beer_card}")
 
 
 class FrenchDeck:
-    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+    ranks = [str(n) for n in range(2, 11)] + list("JQKA")
     # .split() defaults to whitespaces
-    suits = 'spades diamonds clubs hearts'.split()
+    suits = "spades diamonds clubs hearts".split()
 
     def __init__(self):
-        self._cards = [Card(rank, suit) for suit in self.suits
-                       for rank in self.ranks]
+        self._cards = [Card(rank, suit) for suit in self.suits for rank in self.ranks]
 
     def __len__(self):
         return len(self._cards)
@@ -27,14 +26,14 @@ class FrenchDeck:
 deck = FrenchDeck()
 
 # Usage of special method '__len__'
-print(f'Length of the deck: {len(deck)} cards')
+print(f"Length of the deck: {len(deck)} cards")
 
 # Usage of special method '__getitem__'
-print(f'Card examples: {deck[0]}, {deck[-1]}')
+print(f"Card examples: {deck[0]}, {deck[-1]}")
 
-print(f'Card choosen randomly: {random.choice(deck)}')
+print(f"Card choosen randomly: {random.choice(deck)}")
 
-print(f'Deck slicing: \n\t {deck[:3]}, \n\t {deck[12::13]}')
+print(f"Deck slicing: \n\t {deck[:3]}, \n\t {deck[12::13]}")
 
 for card in deck:
     print(card)
